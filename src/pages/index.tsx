@@ -1,4 +1,4 @@
-import { Button, Box, Flex } from '@chakra-ui/react';
+import { Button, Box, Flex, Text } from '@chakra-ui/react';
 import { useEffect, useMemo } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { Header } from '../components/Header';
@@ -99,7 +99,7 @@ export default function Home(): JSX.Element {
       >
         <CardList cards={formattedData} />
 
-        {hasNextPage && (
+        {hasNextPage ? (
           <Button
             type="button"
             onClick={() => fetchNextPage()}
@@ -110,6 +110,10 @@ export default function Home(): JSX.Element {
           >
             {isFetchingNextPage ? 'Carregando...' : 'Carregar mais'}
           </Button>
+        ) : (
+          <Text marginTop={20} alignSelf="center" w="fit-content">
+            WOW! Você chegou até o fim das postagens! 👏
+          </Text>
         )}
       </Flex>
     </>
