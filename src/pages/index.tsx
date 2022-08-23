@@ -1,5 +1,5 @@
 import { Button, Box, Flex } from '@chakra-ui/react';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { Header } from '../components/Header';
 import { CardList } from '../components/CardList';
@@ -50,6 +50,24 @@ export default function Home(): JSX.Element {
     // TODO GET AND RETURN NEXT PAGE PARAM
     { getNextPageParam: lastPage => lastPage?.after ?? null }
   );
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    function onScroll() {
+      // const target = ev.target as Document;
+      const { scrollHeight, scrollTop, clientHeight } =
+        document.scrollingElement;
+
+      if (hasNextPage && scrollHeight - scrollTop <= clientHeight * 1.2) {
+        fetchNextPage();
+      }
+    }
+
+    document.addEventListener('scroll', onScroll);
+    return () => {
+      document.removeEventListener('scroll', onScroll);
+    };
+  }, [hasNextPage, fetchNextPage]);
 
   const formattedData = useMemo(() => {
     // TODO FORMAT AND FLAT DATA ARRAY
