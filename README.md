@@ -1,7 +1,7 @@
 # Upfi
 
 <p align="center">
- <img src="https://user-images.githubusercontent.com/60658855/185819317-2631a8b7-4b05-48f3-98a6-6460b304fcf8.gif" align="center"/>
+ <img src="https://user-images.githubusercontent.com/60658855/186309826-765e2bbb-05b2-4e77-9044-86baaa798f29.gif" align="center"/>
 </p>
 
 This is a study project made to develop ReactJS and learn it's concepts.
